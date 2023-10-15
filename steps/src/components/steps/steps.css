@@ -3,6 +3,11 @@
  height: 200px;
  width: 500px;
  margin: 100px auto;
+ padding: 30px 50px;
+}
+.close{
+  display: flex;
+  justify-content: end;
 }
 .btn-1{
  display: flex;

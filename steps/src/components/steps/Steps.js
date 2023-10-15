@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './steps.css'
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const message = [
@@ -8,19 +10,34 @@ const message = [
  "Invest your new income 🤑"
 ]
 const Steps = () => {
- const [step ,setStep] = useState(1)
+  const [step, setStep] = useState(1)
+  const [test, setTest] = useState({ name: "saron" })
+  const [isOpen, setIsOpen] = useState(true)
 function handlePrevious() {
   if(step>1)
    setStep(step-1) 
- }
+  }
+  function Open() {
+    setIsOpen(!isOpen)
+  }
  function handleNext() {
   if(step<3)
-  setStep(step+1) 
+     setStep(step + 1) 
+   setTest({name:"Abebe"})
 
  }
  // const step = 1;
   return (
-   <div className='steps'>
+    <div>
+       <div className='close'>
+        <IconButton onClick={Open}>
+        <CloseIcon />
+      </IconButton>
+      </div>
+      {isOpen && (
+    <div className='steps'>
+
+     
     <div className='btn-1'>
      <button className={step >= 1 ? "active" : ""}>
       1
@@ -33,7 +50,8 @@ function handlePrevious() {
      </button>
     </div>
     <div className=' message '>
-     step {step}: {message[step - 1]}
+        step {step}: {message[step - 1]}
+        {test.name}
     </div>
      <div className='btn-2'>
      <button onClick={handlePrevious}>
@@ -43,7 +61,8 @@ function handlePrevious() {
       next
      </button>
    </div>
-   </div>
+      </div>)}
+      </div>
   )
 }
 
